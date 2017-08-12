@@ -1,7 +1,9 @@
+import { EMAIL_CHANGED } from './types';
+
 // Action Creator returns an action
 export const emailChanged = (text) => {
     return {
-        type: 'email_changed',
+        type: EMAIL_CHANGED,
         payload: text
     };
 };
