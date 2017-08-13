@@ -20,6 +20,8 @@ class App extends Component {
           firebase.initializeApp(config);
     }
 
+// Middleware is what allows us to take the middleware Intel redux to actually make use of this thing.
+// Redux Thunk handle any type of asynchronous action creators
     render() {
         const store = createStore(reducers, {}, applyMiddleware(ReduxThunk));
 
