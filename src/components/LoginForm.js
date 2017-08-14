@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Text } from 'react-native';
 import { connect } from 'react-redux';
 import { emailChanged, passwordChanged, loginUser } from '../actions';
-import { Card, CardSection, Input, Button } from './common';
+import { Card, CardSection, Input, Button, Spinner } from './common';
 
 class LoginForm extends Component {
     // Call Action Creator with new text
@@ -21,6 +21,18 @@ class LoginForm extends Component {
 
         // Pass an object has both email and password properties
         this.props.loginUser({ email, password });
+    }
+
+    renderButton() {
+        if (this.props.loading) {
+            return <Spinner size="large" />;
+        }
+
+        return (
+            <Button onPress={this.onButtonPress.bind(this)}>
+                Log In
+            </Button>
+        );
     }
 
     render() {
@@ -49,9 +61,7 @@ class LoginForm extends Component {
                 </Text>
 
                 <CardSection>
-                    <Button onPress={this.onButtonPress.bind(this)}>
-                        Log In
-                    </Button>
+                    {this.renderButton()}
                 </CardSection>
             </Card>
         );
@@ -68,9 +78,9 @@ const styles = {
 
 // Pull email, password & error from 'AuthReducer'
 const mapStateToProps = ({ auth }) => {
-    const { email, password, error } = auth;
+    const { email, password, error, loading } = auth;
 
-    return { email, password, error };
+    return { email, password, error, loading };
 };
 
 // Giving connect action creators emailChanged, passwordChanged and loginUser to LoginFrom
