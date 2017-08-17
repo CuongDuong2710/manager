@@ -25,7 +25,6 @@ export const employeeCreate = ({ name, phone, shift }) => {
                 Actions.employeeList({ type: 'reset' })
             });
         }
-    };
 };
 
 export const employeeFetch = () => {
@@ -37,6 +36,4 @@ export const employeeFetch = () => {
                 dispatch({ type: EMPLOYEE_FETCH_SUCCESS, payload: snapshot.val() });
             });
     }
-
-
 };
