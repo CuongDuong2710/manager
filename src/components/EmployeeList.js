@@ -14,7 +14,6 @@ class EmployeeList extends Component {
 
     // 'componentWillReceivedProps()' will be called whenever we are about to receive a new set of props to rerun for the component with.
     componentWillReceiveProps(nextProps) {
-    debugger;
         // nextProps are the next set of props that this component
         // will be rendered with
         // this.props is still the old set of props
@@ -38,7 +37,7 @@ class EmployeeList extends Component {
             <ListView
                 enableEmptySections
                 dataSource={this.dataSource}
-                renderRow={this.renderRow()}
+                renderRow={this.renderRow}
             />
         );
     }
